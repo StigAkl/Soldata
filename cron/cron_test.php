@@ -22,7 +22,6 @@ $stmt = $db->prepare($sql);
 $stmt->bindParam(":date", $date->format("Y-m-d H:i:s"));
 $stmt->bindParam(":energy", $energy);
 $stmt->bindParam(":power", $power);
-
 $stmt->execute();
 
 

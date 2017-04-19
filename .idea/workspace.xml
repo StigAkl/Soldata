@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e3ca79d-2744-4735-8218-7a884c4fb2ae" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/access/database_functions.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/access/db_connect.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cron/cron_test.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cron/get_solar_data.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/functions/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/design/default.css" afterPath="$PROJECT_DIR$/design/default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cron/cron_test.php" afterPath="$PROJECT_DIR$/cron/cron_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cron/get_solar_data.php" afterPath="$PROJECT_DIR$/cron/get_solar_data.php" />
     </list>
     <ignored path="Soldata.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,10 +39,10 @@
       <file leaf-file-name="cron_test.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cron/cron_test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <marker date="1492607332751" expanded="true" signature="277:348" ph="INSERT INTO solar... " />
+                <marker date="1492608364187" expanded="true" signature="277:348" ph="INSERT INTO solar... " />
               </folding>
             </state>
           </provider>
@@ -57,10 +51,11 @@
       <file leaf-file-name="get_solar_data.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cron/get_solar_data.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
               <folding>
                 <element signature="e#6#86#0#PHP" expanded="true" />
+                <marker date="1492609384376" expanded="true" signature="555:626" ph="INSERT INTO solar... " />
               </folding>
             </state>
           </provider>
@@ -257,12 +252,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1492604728094</updated>
-      <workItem from="1492604729307" duration="3206000" />
+      <workItem from="1492604729307" duration="4451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3206000" />
+    <option name="totallyTimeSpent" value="4451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -431,20 +426,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cron/cron_test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <marker date="1492607332751" expanded="true" signature="277:348" ph="INSERT INTO solar... " />
+            <marker date="1492608364187" expanded="true" signature="277:348" ph="INSERT INTO solar... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cron/get_solar_data.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding>
             <element signature="e#6#86#0#PHP" expanded="true" />
+            <marker date="1492609384376" expanded="true" signature="555:626" ph="INSERT INTO solar... " />
           </folding>
         </state>
       </provider>
