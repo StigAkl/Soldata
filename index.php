@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div class="title">Velkommen til soldata.no</div>
+<div class="title">Velkommen til soldata.no!!!!</div>
 
 </body>
 </html>
