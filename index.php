@@ -1,3 +1,4 @@
+<?php include_once ("access/database_functions.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,9 @@
 <body>
 
 <div class="title">Velkommen til soldata.no!!!!</div>
+
+
+<?php add(); ?>
 
 </body>
 </html>

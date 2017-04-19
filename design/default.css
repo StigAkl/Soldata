@@ -6,6 +6,10 @@ html {
     background-size: cover;
 }
 
+body {
+    color: white;
+}
+
 .title {
     font-size: 3.0em;
     color: #ffc223;
