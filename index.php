@@ -11,7 +11,14 @@
 <div class="title">Velkommen til soldata.no!!!!</div>
 
 
-<?php add(); ?>
+<?php
+
+
+get_production_last_week();
+
+
+
+?>
 
 </body>
 </html>

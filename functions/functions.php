@@ -10,6 +10,6 @@
 function get_datetime() {
     $now = new DateTime();
     $now->add(new DateInterval("PT2H"));
-    return $now;
+    return $now; 
 }
 ?>
