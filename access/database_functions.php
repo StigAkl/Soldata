@@ -59,4 +59,111 @@ function get_production_last_week() {
     return $week_days; 
 }
 
+function production_today() {
+    global $db;
+    $start_day = strtotime("today midnight");
+    $end_day = strtotime("tomorrow midnight");
+
+    $start = date("Y-m-d H:i:s", $start_day);
+    $end = date("Y-m-d H:i:s", $end_day);
+
+    $sql = "SELECT * FROM power WHERE date >= '$start' AND date < '$end'";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+
+    $today_array = [
+        "00" => 0,
+        "01" => 0,
+        "02" => 0,
+        "03" => 0,
+        "04" => 0,
+        "05" => 0,
+        "06" => 0,
+        "07" => 0,
+        "08" => 0,
+        "09" => 0,
+        "10" => 0,
+        "11" => 0,
+        "12" => 0,
+        "13" => 0,
+        "14" => 0,
+        "15" => 0,
+        "16" => 0,
+        "17" => 0,
+        "18" => 0,
+        "19" => 0,
+        "20" => 0,
+        "21" => 0,
+        "22"=> 0,
+        "23" => 0
+    ];
+
+    while($result = $stmt->fetch()) {
+        $date = DateTime::createFromFormat("Y-m-d H:i:s", $result['date']);
+        $h = $date->format("H");
+
+        $today_array[$h] = $today_array[$h] + intval($result['value']);
+    }
+
+
+    return $today_array;
+}
+
+function production_at_day($date) {
+    global $db;
+
+    //Setter start_date og end_date til samme dag, men setter tidspunkt fra 00:00:00-23:59:59 for å hente ut data for hele dagen
+
+    $start_date = DateTime::createFromFormat("Y-m-d H:i:s", $date);
+    $start_date->setTime(0, 0, 0);
+    $end_date = DateTime::createFromFormat("Y-m-d H:i:s", $date);
+    $end_date->setTime(23, 59, 59);
+
+    //Konverterer DateTime til string
+    $start = $start_date->format("Y-m-d H:i:s");
+    $end = $end_date->format("Y-m-d H:i:s");
+
+    $sql = "SELECT * FROM power WHERE date >= '$start' AND date < '$end'";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+
+    $today_array = [
+        "00" => 0,
+        "01" => 0,
+        "02" => 0,
+        "03" => 0,
+        "04" => 0,
+        "05" => 0,
+        "06" => 0,
+        "07" => 0,
+        "08" => 0,
+        "09" => 0,
+        "10" => 0,
+        "11" => 0,
+        "12" => 0,
+        "13" => 0,
+        "14" => 0,
+        "15" => 0,
+        "16" => 0,
+        "17" => 0,
+        "18" => 0,
+        "19" => 0,
+        "20" => 0,
+        "21" => 0,
+        "22"=> 0,
+        "23" => 0
+    ];
+
+    while($result = $stmt->fetch()) {
+        $date = DateTime::createFromFormat("Y-m-d H:i:s", $result['date']);
+        $h = $date->format("H");
+
+        $today_array[$h] = $today_array[$h] + intval($result['value']);
+    }
+
+
+    return $today_array;
+}
 ?>
