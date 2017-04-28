@@ -11,7 +11,23 @@ $last_week = get_production_last_week();
     <meta charset="utf-8" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-    <script src="js/lib/Chart.js"></script>  
+    <script src="js/lib/Chart.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+
+        .graph {
+            margin: 0 auto;
+            width: 50%;
+            height: 50%;
+            min-width: 400px;
+            min-height: 350px;
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -24,10 +40,22 @@ $last_week = get_production_last_week();
     <li><a href="#omoss">Om Oss</a></li>
     <li><a href="#download">Nedlastinger</a></li>
 </ul>
+
 </div>
 <div id="content">
 
-<canvas class="chart" width="800" height="400"></canvas>
+<div id="tabs">
+  <div class="btn-group">
+    <button type="button" class="btn btn-success">Dag</button>
+    <button type="button" class="btn btn-success">Uke</button>
+    <button type="button" class="btn btn-success">Måned</button>
+    <button type="button" class="btn btn-success">År</button>
+  </div>
+</div>
+
+    <div class="graph">
+        <canvas class="chart" width="800" height="400"></canvas>
+    </div>
 <script>
 var ctx = document.getElementsByClassName("chart");
 var myChart = new Chart(ctx, {
@@ -38,32 +66,31 @@ var myChart = new Chart(ctx, {
             label: 'kW produced this week',
             data: [<?php echo $last_week["Mon"]/1000 . "," . $last_week["Tue"]/1000 . "," . $last_week["Wed"]/1000 . "," . $last_week["Thu"]/1000 . "," . $last_week["Fri"]/1000;?> ],
             backgroundColor: [
-                'rgba(133, 183, 62, 0.6)',
-                'rgba(133, 183, 62, 0.6)',
-                'rgba(133, 183, 62, 0.6)',
-                'rgba(133, 183, 62, 0.6)',
-                'rgba(133, 183, 62, 0.6)',
-                'rgba(133, 183, 62, 0.6)'
+                'rgba(92, 184, 92, 0.6)',
+                'rgba(92, 184, 92, 0.6)',
+                'rgba(92, 184, 92, 0.6)',
+                'rgba(92, 184, 92, 0.6)',
+                'rgba(92, 184, 92, 0.6)',
+                'rgba(92, 184, 92, 0.6)',
+                //'rgba(133, 183, 62, 0.6)'
             ],
             borderColor: [
-                'rgba(244, 201, 45, 1)',
-                'rgba(244, 201, 45, 1)',
-                'rgba(244, 201, 45, 1)',
-                'rgba(244, 201, 45, 1)',
-                'rgba(244, 201, 45, 1)',
-                'rgba(244, 201, 45, 1)'
+                'rgba(76,174,76,1)',
+                'rgba(76,174,76,1)',
+                'rgba(76,174,76,1)',
+                'rgba(76,174,76,1)',
+                'rgba(76,174,76,1)',
+                'rgba(76,174,76,1)',
+                //'rgba(244, 201, 45, 1)'
             ],
             borderWidth: 2
         }]
     },
     options: {
-       responsive: false
+       responsive: true
     }
 });
 </script>
-
-
-
 
 </div>
 <div id="information">
@@ -97,9 +124,19 @@ var myChart = new Chart(ctx, {
     	</div>
     </div>
 </div>
-    <div class="clear"></div>
+    <!---<div class="clear"></div>-->
     <div id="footer">
-        <p style="margin: 0 auto">Copyright R</p>
+        <div class="infobox">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/SolarEdge_logo.svg/320px-SolarEdge_logo.svg.png"/>
+            <p>SolarEgde er produsent av solcellepanelene. Soldata.no bruker SolarEdge sitt API for å hente ut data fra solcellepanelene</p>
+        </div>
+
+        <div class="infobox">
+        </div>
+
+        <div class="infobox">
+        </div>
+
     </div>
 </div>
 </body>

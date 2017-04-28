@@ -23,7 +23,6 @@ function get_production_now(){
 function get_production_last_week() {
 
     global $db;
-
     $d = strtotime("today");
     $start_week = strtotime("last monday midnight",$d);
     $end_week = strtotime("next sunday",$d);
@@ -165,5 +164,60 @@ function production_at_day($date) {
 
 
     return $today_array;
+}
+
+
+function get_data_month($date_str)
+{
+    $date = DateTime::createFromFormat("Y-m-d H:i:s", $date_str);
+
+    if (!validateDate($date_str)) {
+        $date = get_datetime();
+    }
+
+    $month = $date->format("n");
+    $year = $date->format("Y");
+
+
+    global $db;
+    $sql = "SELECT  
+      SUM(CASE WHEN DAY(date) = 1 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_1, 
+      SUM(CASE WHEN DAY(date) = 2 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_2, 
+      SUM(CASE WHEN DAY(date) = 3 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_3, 
+      SUM(CASE WHEN DAY(date) = 4 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_4, 
+      SUM(CASE WHEN DAY(date) = 5 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_5, 
+      SUM(CASE WHEN DAY(date) = 6 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_6, 
+      SUM(CASE WHEN DAY(date) = 7 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_7, 
+      SUM(CASE WHEN DAY(date) = 8 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_8, 
+      SUM(CASE WHEN DAY(date) = 9 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_9, 
+      SUM(CASE WHEN DAY(date) = 10 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_10, 
+      SUM(CASE WHEN DAY(date) = 11 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_11, 
+      SUM(CASE WHEN DAY(date) = 12 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_12, 
+      SUM(CASE WHEN DAY(date) = 13 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_13, 
+      SUM(CASE WHEN DAY(date) = 14 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_14, 
+      SUM(CASE WHEN DAY(date) = 15 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_15, 
+      SUM(CASE WHEN DAY(date) = 16 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_16, 
+      SUM(CASE WHEN DAY(date) = 17 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_17, 
+      SUM(CASE WHEN DAY(date) = 18 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_18, 
+      SUM(CASE WHEN DAY(date) = 19 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_19, 
+      SUM(CASE WHEN DAY(date) = 20 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_20, 
+      SUM(CASE WHEN DAY(date) = 21 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_21, 
+      SUM(CASE WHEN DAY(date) = 22 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_22, 
+      SUM(CASE WHEN DAY(date) = 23 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_23, 
+      SUM(CASE WHEN DAY(date) = 24 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_24, 
+      SUM(CASE WHEN DAY(date) = 25 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_25, 
+      SUM(CASE WHEN DAY(date) = 26 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_26, 
+      SUM(CASE WHEN DAY(date) = 27 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_27, 
+      SUM(CASE WHEN DAY(date) = 28 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_28, 
+      SUM(CASE WHEN DAY(date) = 29 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_29, 
+      SUM(CASE WHEN DAY(date) = 30 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_30,
+      SUM(CASE WHEN DAY(date) = 31 AND MONTH(date) = $month AND YEAR(date) = $year THEN value END) AS day_31
+      FROM power";
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch();
+
+    return $result;
 }
 ?>

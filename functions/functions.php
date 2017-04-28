@@ -18,4 +18,11 @@ function validateDate($date, $format = 'Y-m-d H:i:s')
     $d = DateTime::createFromFormat($format, $date);
     return $d && $d->format($format) == $date;
 }
+
+function format_number($number) {
+    if(is_numeric($number)) {
+        return number_format($number, 2, ",", " ");
+    }
+    return $number;
+}
 ?>
