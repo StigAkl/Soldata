@@ -318,5 +318,20 @@ function get_energy_from_to($from, $to){
     return $result;
 }
 
+function save_ticket($name, $email, $subject, $message) {
+    $sql = "INSERT INTO support(name, email, subject, message, date) VALUES (:name, :email, :subject, :message, :date)";
+    global $db;
+    $stmt = $db->prepare($sql);
+    $date = get_datetime();
+
+    //Bind parameters to the prepared statement
+    $stmt->bindParam(":name", $name);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":subject", $subject);
+    $stmt->bindParam(":message", $message);
+    $stmt->bindParam("date", $date->format("Y-m-d H:i:s"));
+    $stmt->execute();
+}
+
 
 ?>

@@ -102,6 +102,7 @@ if(isset($_POST['submit_ticket'])) {
     if(empty($nameerror) && empty($emailerror) && empty($subjecterror) && empty($messageerror)) {
         $success = "Takk for at du tok kontakt med oss! Vi vil besvare din henvendelse så raskt som mulig!";
         $_SESSION['success_message']    = $success;
+        save_ticket($name, $email, $subject, $message); 
         header("Location: index.php?page=contact&success");
         exit();
     } else {
@@ -109,7 +110,7 @@ if(isset($_POST['submit_ticket'])) {
         $inputs = array("name" => $nameinput, "email" => $emailinput, "subject" => $subjectinput, "message" => $messageinput);
         $_SESSION["errors"] = $errors;
         $_SESSION["inputs"] = $inputs;
-        header("Location: index.php?page=contact&error");
+        header("Location: index.php?page=contact");
         exit();
     }
 }
