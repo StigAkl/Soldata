@@ -1,6 +1,18 @@
-<?php include_once ("access/database_functions.php");
+<?php
+session_start();
+include_once ("access/database_functions.php");
 include_once ("functions/functions.php");
- ?>
+
+//Inkluder kontrollere dersom nødvendig
+if(isset($_GET['page'])) {
+    switch($_GET['page']) {
+        case "contact":
+            include_once ("controller/contact_controller.php");
+            break;
+    }
+}
+
+?>
 <!doctype html>
 <html>
 <head>

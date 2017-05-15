@@ -290,5 +290,33 @@ function last_date_energy() {
     return $result['date'];
 }
 
+function get_power_from_to($from, $to){
+    $sql = "SELECT * FROM power WHERE date between '$from' AND '$to' ORDER BY date DESC";
+    global $db;
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+    return $result;
+}
+
+function get_energy_from_to($from, $to){
+    $sql = "SELECT * FROM energy WHERE date between '$from' AND '$to' ORDER BY date DESC";
+    global $db;
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+    return $result;
+}
+
 
 ?>

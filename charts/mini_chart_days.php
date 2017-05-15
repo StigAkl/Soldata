@@ -38,7 +38,7 @@ $yesterday = production_at_day(date("Y-m-d H:i:s", strtotime("yesterday")));
     function miniChartDays() {
         var ctx2 = document.getElementById("chart_mini_day");
         var myChart2 = new Chart(ctx2, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: ["05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"],
                 datasets: [{
