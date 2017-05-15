@@ -180,3 +180,101 @@ Start-Date: 2017-05-15 11:00:00
 End-Date: 2017-05-15 12:05:06
 Insertions: 4
 --------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 13:05:04]
+Type: Power
+Start-Date: 2017-05-15%2012:00:00
+End-Date: 2017-05-15%2013:05:03
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 13:05:05]
+Type: Energy
+Start-Date: 2017-05-15 12:00:00
+End-Date: 2017-05-15 13:05:04
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 14:05:07]
+Type: Power
+Start-Date: 2017-05-15%2013:00:00
+End-Date: 2017-05-15%2014:05:07
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 14:05:08]
+Type: Energy
+Start-Date: 2017-05-15 13:00:00
+End-Date: 2017-05-15 14:05:07
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 15:05:06]
+Type: Power
+Start-Date: 2017-05-15%2014:00:00
+End-Date: 2017-05-15%2015:05:05
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 15:05:08]
+Type: Energy
+Start-Date: 2017-05-15 14:00:00
+End-Date: 2017-05-15 15:05:07
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 16:05:05]
+Type: Power
+Start-Date: 2017-05-15%2015:00:00
+End-Date: 2017-05-15%2016:05:03
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 16:05:10]
+Type: Energy
+Start-Date: 2017-05-15 15:00:00
+End-Date: 2017-05-15 16:05:10
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 17:05:07]
+Type: Power
+Start-Date: 2017-05-15%2016:00:00
+End-Date: 2017-05-15%2017:05:06
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 17:05:10]
+Type: Energy
+Start-Date: 2017-05-15 16:00:00
+End-Date: 2017-05-15 17:05:09
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 18:05:06]
+Type: Energy
+Start-Date: 2017-05-15 17:00:00
+End-Date: 2017-05-15 18:05:05
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 18:05:07]
+Type: Power
+Start-Date: 2017-05-15%2017:00:00
+End-Date: 2017-05-15%2018:05:06
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 19:05:05]
+Type: Power
+Start-Date: 2017-05-15%2018:00:00
+End-Date: 2017-05-15%2019:05:04
+Insertions: 4
+--------------------------------
+CRONJOB EXECUTED: 
+Date: 15.05.2017 19:05:05]
+Type: Energy
+Start-Date: 2017-05-15 18:00:00
+End-Date: 2017-05-15 19:05:04
+Insertions: 4
+--------------------------------

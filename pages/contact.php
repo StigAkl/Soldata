@@ -44,17 +44,14 @@
         <div id="form-box">
             <legend>Kontakt oss her</legend>
             <form class="form-horizontal" method="post">
-
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="name">Navn:</label>
                     <?php echo name_form($nameerror, $nameinput); ?>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="email">E-post:</label>
                     <?php echo email_form($emailerror, $emailinput); ?>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="subject">Emne:</label>
                     <div class="col-sm-9">
@@ -69,12 +66,10 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="content">Skriv her:</label>
                     <?php echo message_form($messageerror, $messageinput); ?>
                 </div>
-
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default" name="submit_ticket">Submit</button>

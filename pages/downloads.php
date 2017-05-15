@@ -18,18 +18,18 @@
 
 
 
-
+<form method="POST" action="download2.php">
 
 <div class="container">
     <div class="row">
         <div class="col-sm-1"><label>Fra: </label></div>
             <div class='col-sm-2'>
-                <input type='text' class="form-control" id='datetimepicker4' />
+                <input type='text' name="from_date" class="form-control" id='datetimepicker4' />
             </div>
 
             <div class="col-sm-1"><label>Til: </label></div>
                 <div class='col-sm-2'>
-                    <input type='text' class="form-control" id='datetimepicker3' />
+                    <input type='text' name="to_date" class="form-control" id='datetimepicker3' />
                 </div>
     </div>
 </div>
@@ -37,7 +37,7 @@
         <script type="text/javascript">
             $(function () {
                 $('#datetimepicker3').datetimepicker({
-                    format: 'DD/MM/YYYY',
+                    format: 'YYYY-MM-DD',
                     keepOpen: false,
                 });
             });
@@ -46,7 +46,7 @@
         <script type="text/javascript">
             $(function () {
                 $('#datetimepicker4').datetimepicker({
-                    format: 'DD/MM/YYYY',
+                    format: 'YYYY-MM-DD',
                     keepOpen: false,
                 });
             });
@@ -59,11 +59,11 @@
                     <legend>Soldata</legend>
 
                     <label>Energi: </label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="energy">
                     <br>
                     <br>
                     <label>Power: </label>
-                    <input type="checkbox">
+                    <input type="checkbox" name="power">
                     <br>
 
             </fieldset>
@@ -86,7 +86,7 @@
 
         </div>
         <br>
-        <button type="button" class="btn btn-success">Last ned</button>
+        <button type="submit" class="btn btn-success">Last ned</button>
         </div>
 
     <div class="container">
@@ -101,5 +101,7 @@
                 </li>
             </ul>
         </div>
+        </div>
+        </form>
     </div>
     </div>

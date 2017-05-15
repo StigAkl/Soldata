@@ -6,6 +6,7 @@
  * Time: 14.02
  */
 
+ini_set("display_errors", 0);
 //Initialiser emnevalg
 $subjects = array("Forslag", "Siden er nede", "Annet");
 
