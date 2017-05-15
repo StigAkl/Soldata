@@ -7,8 +7,11 @@ include_once ("db_connect.php");
  * Time: 14.34
  */
 
-
+$connection = TRUE;
 $db =  Db::getInstance();
+
+if(!$db)
+    $connection = FALSE;
 
 function get_production_now(){
     global $db;
@@ -19,10 +22,22 @@ function get_production_now(){
     return $last['value'];
 }
 
+function get_all_power() {
+    global $db;
+    $sql = "SELECT * FROM power";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
 
 function get_production_last_week() {
 
     global $db;
+
     $d = strtotime("today");
     $start_week = strtotime("last monday midnight",$d);
     $end_week = strtotime("next sunday",$d);
@@ -220,4 +235,60 @@ function get_data_month($date_str)
 
     return $result;
 }
+
+
+/*
+ * Return an associative array with all the data for a specific year
+ */
+function get_power_year($year) {
+    $sql = "SELECT * FROM power WHERE YEAR(date) = $year";
+    global $db;
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+
+/*
+ * Return date and time for last database update
+ */
+function last_update() {
+    $sql = "SELECT * FROM cron_job_power WHERE id=1";
+    global $db;
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch();
+
+    $date = DateTime::createFromFormat("Y-m-d H:i:s", $result['last_update']);
+    return $date->format("d.m H:i:s");
+}
+
+function last_date_power() {
+    $sql = "SELECT * FROM power ORDER BY date DESC LIMIT 1";
+    global $db;
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    return $result['date'];
+}
+
+function last_date_energy() {
+    $sql = "SELECT * FROM energy ORDER BY date DESC LIMIT 1";
+    global $db;
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+
+    return $result['date'];
+}
+
+
 ?>

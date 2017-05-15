@@ -1,0 +1,2 @@
+[14-May-2017 19:05:04 UTC] PHP Warning:  file_put_contents(/log/log_14.05.2017 21:05:04.txt): failed to open stream: No such file or directory in /customers/0/d/e/thenewworldproject.com/httpd.www/soldata2/cron/get_solar_data.php on line 88
+[14-May-2017 19:05:05 UTC] PHP Warning:  file_put_contents(/log/log_14.05.2017 21:05:05.txt): failed to open stream: No such file or directory in /customers/0/d/e/thenewworldproject.com/httpd.www/soldata2/cron/get_solar_energy.php on line 103

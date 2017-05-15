@@ -13,7 +13,7 @@ function get_datetime() {
     return $now; 
 }
 
-function validateDate($date, $format = 'Y-m-d H:i:s')
+function validateDate($date, $format = "Y-m-d H:i:s")
 {
     $d = DateTime::createFromFormat($format, $date);
     return $d && $d->format($format) == $date;
@@ -24,5 +24,9 @@ function format_number($number) {
         return number_format($number, 2, ",", " ");
     }
     return $number;
+}
+
+function get_server_hour_delay() {
+    return 2;
 }
 ?>

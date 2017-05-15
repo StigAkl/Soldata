@@ -1,6 +1,6 @@
 <?php
 include_once("functions/functions.php");
-include_once ("access/database_functions.php");
+include_once ("access/database_functions.php"); 
 /**
  * Created by PhpStorm.
  * User: EliseIGank
@@ -9,9 +9,9 @@ include_once ("access/database_functions.php");
  */
 
 
-$month = date("F", strtotime("this month"));
+$month = date("F", strtotime("last month"));
 $date_now = get_datetime();
-$month_to_show = get_data_month($date_now->format("Y-m-d H:i:s"));
+$month_to_show = get_data_month(date("Y-m-d H:i:s", strtotime("this month")));
 
 if(isset($_POST['month']))  {
     $date = htmlspecialchars($_POST['month']);

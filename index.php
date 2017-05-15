@@ -1,13 +1,11 @@
 <?php include_once ("access/database_functions.php");
-
-$last_week = get_production_last_week();
+include_once ("functions/functions.php");
  ?>
 <!doctype html>
 <html>
 <head>
     <title>Soldata.no</title>
-    <link rel="icon" type="image/png" href="imgs/icon.png">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" type="image/png" href="imgs/icon2.png">
     <meta charset="utf-8" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" /> 
@@ -18,126 +16,236 @@ $last_week = get_production_last_week();
 
     <style>
 
-        .graph {
-            margin: 0 auto;
-            width: 50%;
-            height: 50%;
-            min-width: 400px;
-            min-height: 350px;
+        .navbar-default {
+            background-color: #F8F8F8;
+            border-color: #E7E7E7;
         }
 
+        #tabs{
+            margin : 0 auto;
+            width: 210px;
+            margin-top: 35px;
+            margin-bottom: 35px;
+        }
+
+        .progress_bar {
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .lead {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        #mini_chart_day, #mini_chart_month, #mini_chart_week {
+            display: none;
+        }
+
+        .graph {
+            margin: 0 auto;
+            width: 80%;
+            height: 50%;
+        }
+
+        .contact-and-map-box {
+            width: 33%;
+            height: 33%;
+        }
+
+        #form-box {
+            width: 66%;
+            height: 100%;
+            float: left;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .float-left {
+            float: left;
+        }
+
+        .clear {
+            clear: both;
+        }
 
     </style>
 </head>
 
-<body>
-<div id="container">
-<div id="header">
-<ul>
-    <li id="img_li"><a href="http://thenewworldproject.com/soldata/index.html"><img src="imgs/home.png" id="home"></a></li>
-    <li><a href="#nyheter">Nyheter</a></li>
-    <li><a href="#kontakt">Kontakt Oss</a></li>
-    <li><a href="#omoss">Om Oss</a></li>
-    <li><a href="#download">Nedlastinger</a></li>
-</ul>
+<body onload="startTime()">
 
-</div>
-<div id="content">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php">SOLDATA</a>
 
-<div id="tabs">
-  <div class="btn-group">
-    <button type="button" class="btn btn-success">Dag</button>
-    <button type="button" class="btn btn-success">Uke</button>
-    <button type="button" class="btn btn-success">Måned</button>
-    <button type="button" class="btn btn-success">År</button>
-  </div>
-</div>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-    <div class="graph">
-        <canvas class="chart" width="800" height="400"></canvas>
+        </div>
+
+        <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="index.php?page=home"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+            <li><a href="index.php?page=production"><span class="glyphicon glyphicon-flash">Produksjon</span></a></li>
+            <li><a href="index.php?page=about"><span class="glyphicon glyphicon-info-sign"></span> Om oss</a></li>
+            <li><a href="index.php?page=contact"><span class="glyphicon glyphicon-earphone"></span> Kontakt oss</a></li>
+            <li><a href="index.php?page=downloads"><span class="glyphicon glyphicon-download"></span> Nedlastninger</a></li>
+        </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a>
+                        <span style="font-size: 1.1em" id="date"></span>
+                        <span style="font-size: 1.1em; padding-left: 10px;" id="time"></span>
+                    </a>
+                </li>
+            </ul>
+            </div>
     </div>
-<script>
-var ctx = document.getElementsByClassName("chart");
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        datasets: [{
-            label: 'kW produced this week',
-            data: [<?php echo $last_week["Mon"]/1000 . "," . $last_week["Tue"]/1000 . "," . $last_week["Wed"]/1000 . "," . $last_week["Thu"]/1000 . "," . $last_week["Fri"]/1000;?> ],
-            backgroundColor: [
-                'rgba(92, 184, 92, 0.6)',
-                'rgba(92, 184, 92, 0.6)',
-                'rgba(92, 184, 92, 0.6)',
-                'rgba(92, 184, 92, 0.6)',
-                'rgba(92, 184, 92, 0.6)',
-                'rgba(92, 184, 92, 0.6)',
-                //'rgba(133, 183, 62, 0.6)'
-            ],
-            borderColor: [
-                'rgba(76,174,76,1)',
-                'rgba(76,174,76,1)',
-                'rgba(76,174,76,1)',
-                'rgba(76,174,76,1)',
-                'rgba(76,174,76,1)',
-                'rgba(76,174,76,1)',
-                //'rgba(244, 201, 45, 1)'
-            ],
-            borderWidth: 2
-        }]
-    },
-    options: {
-       responsive: true
+</nav>
+
+
+<div class="container">
+
+    <?php
+    $page = "pages/home.php";
+
+    if(!$connection) {
+        include("error/no_db_connection.php");
+        exit();
     }
+    else {
+        if (isset($_GET['page'])) {
+            $site = htmlspecialchars($_GET['page']);
+            switch ($site) {
+                case "home":
+                    $page = "pages/home.php";
+                    break;
+                case "production":
+                    $page = "pages/production.php";
+                    break;
+                case "downloads":
+                    $page = "pages/downloads.php";
+                    break;
+                case "about":
+                    $page = "pages/about.php";
+                    break;
+                case "contact":
+                    $page = "pages/contact.php";
+                    break;
+                default:
+                    $page = "error/page_not_found.php";
+            }
+        }
+
+        include ($page);
+    }
+    ?>
+
+
+
+</div>
+
+<div class="navbar navbar-fixed-bottom bg-success footer">
+    <div class="container" style="align-content: center">
+        <div class="row">
+            <div class="col-sm-4" style="border: 2px solid blue; text-align: center">
+                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-leaf"></span><br>
+                    CO2-utslipp spart<br>
+                    <span class="text-muted">123,456 kg</span></p>
+            </div>
+            <div class="col-sm-4" style="border: 2px solid red; text-align: center">
+                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-lamp"></span><br>
+                    Lyspærer forsynt<br>
+                    <span class="text-muted">123,456 stk</span></p>
+            </div>
+            <div class="col-sm-4" style="border: 2px solid green; text-align: center;">
+                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-tree-deciduous"></span><br>
+                    Trær plantet<br>
+                <span class="text-muted">123,456 stk</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+var url = window.location;
+
+console.log(url);
+// Will only work if string in href matches with location
+$('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+
+// Will also work for relative and absolute hrefs
+$('ul.nav a').filter(function() {
+    return this.href == url;
+}).parent().addClass('active');
+
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('time').innerHTML =
+        h + ":" + m + ":" + s;
+    setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+function getDateAndMonth() {
+    let d = new Date();
+    let month = new Array();
+    month[0] = "Januar";
+    month[1] = "Februar";
+    month[2] = "Mars";
+    month[3] = "April";
+    month[4] = "Mai";
+    month[5] = "Juni";
+    month[6] = "Juli";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "Oktober";
+    month[10] = "November";
+    month[11] = "Desember";
+    let mnd = month[d.getMonth()];
+    let day = d.getDate();
+    return day + ". " + mnd;
+}
+
+function dayAndMonth() {
+    let span = document.getElementById("date");
+    span.innerHTML = getDateAndMonth();
+}
+
+$(document).ready(function(){
+
+        $("#mini_chart_month").fadeIn(1000);
+        $("#mini_chart_day").fadeIn(1000);
+        $("#mini_chart_week").fadeIn(1000);
+
+        miniChartMonth();
+        miniChartDays();
+        miniChartWeek();
 });
+
+
+dayAndMonth();
+
 </script>
-
-</div>
-<div id="information">
-    <div class="infobox" id="introduction">
-    	<div class="displaybox">
-    		<p class="info-heading">Generell informasjon</p>
-            <p class="info_text">Anlegget på Marineholmen ble installert i juli 2016. Siden den gang har det produsert
-            over 300 MW. Anlegget bidro med å sikre nest beste BREEAM-kategori på bygget.</p>
-    	</div>
-    </div>
-    <div class="infobox" id="production_now">
-    	<div class="displaybox">
-    		<p class="info-heading">Produksjon</p>
-            <p class="info_text" id="info_prod">
-                Hittil i dag (kW): 1676 <br>
-                Hittil i dag (kJ): 748 <br>
-                Hittil i år (MW): 43 <br>
-                Hittil i år (MJ): 28
-            </p>
-    	</div>
-    </div>
-    <div class="infobox" id="environmental_savings">
-    	<div class="displaybox">
-    		<p class="info-heading">Vær informasjon</p>
-            <p class="info_text" id="info_inline">
-                <img src="imgs/partly_cloudy.png" align="left" id="weather_icon"/>
-                Det er sol og delvis skyet over Bergen for øyeblikket <br>
-                (sist oppdatert 17:00). <br>
-                Klikk <a class="link" href="https://www.yr.no/place/Norway/Hordaland/Bergen/Bergen/"> her</a> for mer informasjon.
-            </p>
-    	</div>
-    </div>
-</div>
-    <!---<div class="clear"></div>-->
-    <div id="footer">
-        <div class="infobox">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/SolarEdge_logo.svg/320px-SolarEdge_logo.svg.png"/>
-            <p>SolarEgde er produsent av solcellepanelene. Soldata.no bruker SolarEdge sitt API for å hente ut data fra solcellepanelene</p>
-        </div>
-
-        <div class="infobox">
-        </div>
-
-        <div class="infobox">
-        </div>
-
-    </div>
-</div>
 </body>
 </html>
