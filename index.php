@@ -11,6 +11,12 @@ if(isset($_GET['page'])) {
         case "contact":
             include_once ("controller/contact_controller.php");
             break;
+        case "admin_login":
+            include_once ("controller/admin_controller.php");
+            break;
+        case "admin_support_tickets":
+            include_once ("controller/admin_controller.php");
+            break;
     }
 }
 
@@ -90,6 +96,16 @@ if(isset($_GET['page'])) {
             clear: both;
         }
 
+        #loggin_box {
+            width: 15%;
+            margin: 0 auto;
+        }
+
+        .henvendelse {
+            width: 75%;
+            padding: 10px;
+        }
+
     </style>
 </head>
 
@@ -110,7 +126,7 @@ if(isset($_GET['page'])) {
 
         <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li><a href="index.php?page=home"><span class="glyphicon glyphicon-home"> Home</span></a></li>
+            <li><a href="index.php?page=home"><span class="glyphicon glyphicon-home"></span> Hjem</a></li>
             <li><a href="index.php?page=production"><span class="glyphicon glyphicon-flash">Produksjon</span></a></li>
             <li><a href="index.php?page=about"><span class="glyphicon glyphicon-info-sign"></span> Om oss</a></li>
             <li><a href="index.php?page=contact"><span class="glyphicon glyphicon-earphone"></span> Kontakt oss</a></li>
@@ -122,7 +138,7 @@ if(isset($_GET['page'])) {
                 //Hvis vi er logget inn som admin, vil denne vises i menyen
                 if($logged_in) {?>
                 <li>
-                    <a href="#">Admin</a>
+                    <a href="index.php?page=admin_support_tickets">Admin</a>
                 </li>
                 <?php } ?>
                 <li>
@@ -168,6 +184,12 @@ if(isset($_GET['page'])) {
                 case "admin_login":
                     $page = "pages/admin_login.php";
                     break;
+                case "admin_support_tickets":
+                    if(!$logged_in)
+                        $page = "error/page_not_found.php";
+                    else
+                        $page = "pages/admin_support_tickets.php";
+                    break;
                 default:
                     $page = "error/page_not_found.php";
             }
@@ -181,27 +203,27 @@ if(isset($_GET['page'])) {
 
 </div>
 
-<div class="navbar navbar-fixed-bottom bg-success footer">
-    <div class="container" style="align-content: center">
-        <div class="row">
-            <div class="col-sm-4" style="border: 2px solid blue; text-align: center">
-                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-leaf"></span><br>
-                    CO2-utslipp spart<br>
-                    <span class="text-muted">123,456 kg</span></p>
-            </div>
-            <div class="col-sm-4" style="border: 2px solid red; text-align: center">
-                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-lamp"></span><br>
-                    Lyspærer forsynt<br>
-                    <span class="text-muted">123,456 stk</span></p>
-            </div>
-            <div class="col-sm-4" style="border: 2px solid green; text-align: center;">
-                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-tree-deciduous"></span><br>
-                    Trær plantet<br>
-                <span class="text-muted">123,456 stk</span></p>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div class="navbar navbar-fixed-bottom bg-success footer">-->
+<!--    <div class="container" style="align-content: center">-->
+<!--        <div class="row">-->
+<!--            <div class="col-sm-4" style="border: 2px solid blue; text-align: center">-->
+<!--                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-leaf"></span><br>-->
+<!--                    CO2-utslipp spart<br>-->
+<!--                    <span class="text-muted">123,456 kg</span></p>-->
+<!--            </div>-->
+<!--            <div class="col-sm-4" style="border: 2px solid red; text-align: center">-->
+<!--                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-lamp"></span><br>-->
+<!--                    Lyspærer forsynt<br>-->
+<!--                    <span class="text-muted">123,456 stk</span></p>-->
+<!--            </div>-->
+<!--            <div class="col-sm-4" style="border: 2px solid green; text-align: center;">-->
+<!--                <p class="text-success lead" style="margin: 0"><span class="glyphicon glyphicon-tree-deciduous"></span><br>-->
+<!--                    Trær plantet<br>-->
+<!--                <span class="text-muted">123,456 stk</span></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <script>
 

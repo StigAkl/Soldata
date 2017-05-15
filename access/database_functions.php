@@ -334,4 +334,29 @@ function save_ticket($name, $email, $subject, $message) {
 }
 
 
+/*
+ * Returns all the unclosed support tickets
+ */
+function get_support() {
+    global $db;
+    $sql = "SELECT * FROM support WHERE replied = false";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+function get_ticket($ticket) {
+    global $db;
+    $sql = "SELECT * FROM support WHERE id = $ticket";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $resultat = $stmt->fetch();
+
+    return $resultat;
+}
+
 ?>
