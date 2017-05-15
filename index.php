@@ -1,5 +1,7 @@
 <?php
 session_start();
+$logged_in = $_SESSION['admin_logged_in'] == true ? true : false;
+
 include_once ("access/database_functions.php");
 include_once ("functions/functions.php");
 
@@ -115,6 +117,14 @@ if(isset($_GET['page'])) {
             <li><a href="index.php?page=downloads"><span class="glyphicon glyphicon-download"></span> Nedlastninger</a></li>
         </ul>
             <ul class="nav navbar-nav navbar-right">
+
+                <?php
+                //Hvis vi er logget inn som admin, vil denne vises i menyen
+                if($logged_in) {?>
+                <li>
+                    <a href="#">Admin</a>
+                </li>
+                <?php } ?>
                 <li>
                     <a>
                         <span style="font-size: 1.1em" id="date"></span>
@@ -154,6 +164,9 @@ if(isset($_GET['page'])) {
                     break;
                 case "contact":
                     $page = "pages/contact.php";
+                    break;
+                case "admin_login":
+                    $page = "pages/admin_login.php";
                     break;
                 default:
                     $page = "error/page_not_found.php";

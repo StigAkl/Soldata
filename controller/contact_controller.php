@@ -68,17 +68,17 @@ if(isset($_POST['submit_ticket'])) {
 
     //Validering av name, setter nameinput til blankt dersom feil.
     if(!preg_match($NAME_REGEX,$name) || strlen($name) > $NAME_MAX_LENGTH) {
-        $nameerror = "Navn kan kun inneholde bokstaver a-z / A-Z og ikke være lenger enn " . $NAME_MAX_LENGTH . " tegn";
+        $nameerror = "<div class='alert alert-danger'>Navn kan kun inneholde bokstaver a-z / A-Z og ikke være lenger enn " . $NAME_MAX_LENGTH . " tegn</div>";
         $nameinput = "";
     } else if(empty($name)) {
-        $nameerror  = "Du må oppgi navn.";
+        $nameerror  = "<div class='alert alert-danger'>Du må oppgi navn.</div>";
         $nameinput  = "";
     }
 
 
     //validering av subject, setter subjectinput til blankt dersom feil
     if(empty($subject) || strlen($subject) > $SUBJECT_MAX_LENGTH || !preg_match($SUBJECT_REGEX, $subject)) {
-        $subjecterror   = "Ugyldig emne.";
+        $subjecterror   = "<div class='alert alert-danger'>Ugyldig emne.</div>";
         $subjectinput   = "";
     }
 
@@ -88,21 +88,23 @@ if(isset($_POST['submit_ticket'])) {
         $emailerror  = "Du må oppgi inn en gyldig epost";
         $emailinput  = "";
     } else if(strlen($email) > $EMAIL_MAX_LENGTH) {
-        $emailerror = "Eposten kan ikke være lenger enn " . $EMAIL_MAX_LENGTH . " tegn";
+        $emailerror = "<div class='alert alert-danger'>Eposten kan ikke være lenger enn " . $EMAIL_MAX_LENGTH . " tegn</div>";
         $emailinput = "";
     }
 
     //Validering av meldingen
     if(empty($message)) {
-        $messageerror   = "Bare bokstaver, tall og følgende tegn er lovlig: . / -";
+        $messageerror   = "<div class='alert alert-danger'>Du må skrive en melding</div>";
     }
 
 
     //Dersom ingen feil, skal informasjonen lagres i databasen og vi gjør en redirect
     if(empty($nameerror) && empty($emailerror) && empty($subjecterror) && empty($messageerror)) {
-        $success = "Takk for at du tok kontakt med oss! Vi vil besvare din henvendelse så raskt som mulig!";
+        $success = '<div class="alert alert-success">
+                Takk for at du tok kontakt med oss! Vi vil besvare din henvendelse så raskt som mulig!
+            </div>';
         $_SESSION['success_message']    = $success;
-        save_ticket($name, $email, $subject, $message); 
+        save_ticket($name, $email, $subject, $message);
         header("Location: index.php?page=contact&success");
         exit();
     } else {

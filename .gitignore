@@ -1,3 +1,4 @@
 access/db_connect.php
 
 .idea/*
+pages/admin_login.php

@@ -87,7 +87,7 @@
 
 </div>
 <?php
-session_unset();
-session_destroy();
+unset($_SESSION['errors']);
+unset($_SESSION['inputs']);
 ?>
 
