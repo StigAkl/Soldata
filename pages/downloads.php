@@ -1,6 +1,6 @@
 <?php include_once("controller/download.php"); ?>
-<script type="text/javascript" src="lib/selectize/dist/js/standalone/selectize.min.js"></script>
-<link rel="stylesheet" type="text/css" href="lib/selectize/dist/css/selectize.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <div class="panel panel-success" id="graphs">
     <div class="panel-heading"><h4>Nedlastninger <img src="imgs/sun.png" width="25px" height="25px"/></h4></div>
     <div class="panel-body">
@@ -8,37 +8,19 @@
         <p class="lead">Nedlastninger</p>
 
 
-        <div class="container">
-                <script>
-                        var options=["1","2","3","4"];
-                </script>
-                <script>
-                    $(function() {
-                        $('.day').selectize(options);
-                    });
-                </script>
 
-
-    <div class="container">
-        <div class="row">
-            <div class='col-sm-6'>
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <script type="text/javascript">
-                $(function () {
-                    $('#datetimepicker1').datetimepicker();
-                });
-            </script>
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <input type='text' class="form-control" id='datetimepicker4' />
         </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker4').datetimepicker();
+            });
+        </script>
     </div>
-
+</div>
                 <label>Fra: </label>
                 &nbsp
                 <select class="day" data-placeholder="Jævlig bra Andrè!">
